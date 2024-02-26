@@ -3,9 +3,9 @@ import { Navbar, Container, Nav, Card } from 'react-bootstrap'
 import './App.css';
 import data from './data.js'
 import { Routes, Route, Link } from 'react-router-dom'
-import Detail from './Detail.js'
+import Detail from './routes/Detail.js'
 import axios from 'axios';
-import { click } from '@testing-library/user-event/dist/click.js';
+import Cart from './routes/Cart.js'
 
 function App() {
 
@@ -75,6 +75,7 @@ function App() {
           </>
         } />
         <Route path="/detail/:id" element={ <Detail shoes={shoes}/> }/>
+        <Route path="cart" element={<Cart />}></Route>
       </Routes>
 
     </div>
@@ -84,7 +85,7 @@ function App() {
 function Goods(props){
   return (
     <div className="col-md-4">
-      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" alt=""/>
       <h4>{ props.shoes.title }</h4>
       <p>{ props.shoes.price }</p>
     </div>
