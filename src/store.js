@@ -12,11 +12,14 @@ const cart = createSlice({
     increaseCount(state, action) {
       let 번호 = state.findIndex((a)=>{ return a.id == action.payload })
       state[번호].count++
+    },
+    addCart(state, action) {
+      state.push(action.payload)
     }
   }
 })
 
-export const { increaseCount } = cart.actions
+export const { increaseCount, addCart } = cart.actions
 
 export default configureStore({
   reducer: { 

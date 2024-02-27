@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar, Container, Nav, Card } from 'react-bootstrap'
 import './App.css';
 import data from './data.js'
@@ -8,6 +8,12 @@ import axios from 'axios';
 import Cart from './routes/Cart.js'
 
 function App() {
+
+  useEffect(()=>{
+    if(!localStorage.getItem('watched')) {
+      localStorage.setItem('watched', JSON.stringify([]))
+    }
+  }, [])
 
   const [shoes, setShoes] = useState(data);
   const [clickButton, setClickButton] = useState(1);
@@ -20,7 +26,7 @@ function App() {
           <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='#home'>Cart</Nav.Link>
+            <Nav.Link href='/cart'>Cart</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
